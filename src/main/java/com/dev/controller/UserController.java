@@ -25,7 +25,7 @@ public class UserController {
     public String user(@PathVariable Long id, Model model) {
         LOG.info("user page");
         model.addAttribute("user", userRepository.findOne(id));
-        LOG.info("find user by id={id}: " + userRepository.findOne(id));
+        LOG.info(String.format("find user by id=%s: %s", id, userRepository.findOne(id)));
         return "user";
     }
 }
