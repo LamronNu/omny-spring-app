@@ -27,6 +27,11 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 
 
 ##Project decription:
+
+###Summary:
+Application created basics on spring-boot and maven, logging by Log4j (to console and file) and using bootstrap-pattern on jsp-pages.
+You can run it by one command (see "how to run" paragraph) and quickly check two task requirements: user info page (by pressing appropriate link in table on index-page) and downloading the csv-file with list of users who were created some number of days ago.
+
 ###Technology stack:
 - Spring boot, MVC, JPA
 - JSP, Bootstrap
