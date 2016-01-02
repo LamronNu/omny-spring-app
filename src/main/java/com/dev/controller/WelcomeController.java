@@ -43,38 +43,36 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/run", method = RequestMethod.POST)
-    public String runBatch(@ModelAttribute("batchJob") BatchJob job, HttpServletResponse httpResponse) {
-
+    public void runBatch(@ModelAttribute("batchJob") BatchJob job, HttpServletResponse httpResponse) {
         LOG.info("run job!");
         Integer daysCount = job.daysCount;
         if (daysCount == null) {
-            return "redirect:/";
+            return;
         }
         File resultFile = userService.getCsvFile(daysCount);
         if (resultFile != null) {//write the result to response
-            try {
-                String fileName = resultFile.getName();
-                httpResponse.setContentType("text/csv;charset=UTF-8");
-                httpResponse.setHeader("Content-disposition", "attachment; filename=" + fileName);
-                FileInputStream inputStream = new FileInputStream(fileName);
-                try {
-                    int c;
-                    while ((c = inputStream.read()) != -1) {
-                        httpResponse.getWriter().write(c);
-                    }
-                } finally {
-                    if (inputStream != null) {
-                        inputStream.close();
-                    }
-                    httpResponse.getWriter().close();
-                    resultFile.delete();
-                }
-
-            } catch (IOException e) {
-                LOG.error("cant write result file to response!", e);
-            }
+            writeFileToResponse(httpResponse, resultFile);
         }
-        return "redirect:/";
+    }
+
+    private void writeFileToResponse(HttpServletResponse httpResponse, File resultFile) {
+        try {
+            String fileName = resultFile.getName();
+            httpResponse.setContentType("text/csv;charset=UTF-8");
+            httpResponse.setHeader("Content-disposition", "attachment; filename=" + fileName);
+            try (FileInputStream inputStream = new FileInputStream(fileName)) {
+                int c;
+                while ((c = inputStream.read()) != -1) {
+                    httpResponse.getWriter().write(c);
+                }
+            } finally {
+                httpResponse.getWriter().close();
+                resultFile.delete();
+            }
+
+        } catch (IOException e) {
+            LOG.error("cant write result file to response!", e);
+        }
     }
 
     class BatchJob {

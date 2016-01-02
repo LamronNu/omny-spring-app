@@ -50,14 +50,14 @@
     </tbody>
 </table>
 
-<h1>Run batch job</h1>
+<h1>Get list of users,created n days ago:</h1>
 
 <form:form commandName="batchJob" cssClass="form-inline" method="post" action="/run">
 
     <div class="form-group">
         <label for="daysCount" class="control-label">daysCount:</label>
         <form:input path="daysCount" cssClass="form-control" size="25"/>
-        <input type="submit" value="Run!" class="btn btn-lg btn-primary"/>
+        <input type="submit" value="Download file" class="btn btn-lg btn-primary"/>
     </div>
 
 </form:form>
