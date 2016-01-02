@@ -36,10 +36,10 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 1) Welcome-page represent the list of all available users in table:
 ![image](/screenshots/welcome-page.png)
 
-2) to get user`s info you can click on appropriate link (in previous table) or enter ulr localhost\user\{user_id}:
+2) to get user`s info you can click on appropriate link (in previous table) or enter ulr localhost\user\\{user_id}:
 ![image](/screenshots/user-info-page.png)
 
-3) also for operating with user`s info you can use rest-services (description is <a href="#0_api_contents">below</a>), for example, to get info about user with id=1: 
+3) also for operating with users you can use rest-services (description is <a href="#0_api_contents">below</a>), for example, to get info about user with id=1: <br/>
 ![image](/screenshots/user-info-rest-page.png)
 
 4) to get list of users, created **n** days ago, enter this **n** to input-field on welcome-page -- and it will be downloaded the csv-file (if there are exists such records):
@@ -56,7 +56,7 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 ####Request-method:
 GET
 ####URL: 
-server:port\\rest\user\{id}
+server:port\\rest\user\\{id}
 ####Parameters:
 - id -- id of user
 
