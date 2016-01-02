@@ -48,6 +48,8 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 <a name="0_api_contents">
 ##Rest-API specification:</a><br/>
 <a href="#1_getUserInfo">1. Get user info</a><br/>
+<a href="#2_getAllUsers">2. Get all users</a><br/>
+<a href="#3_setUserInfo">3. Get all users</a><br/>
 
 <a name="1_getUserInfo">
 ####1. Get user info:
@@ -76,5 +78,49 @@ http://localhost:8080/rest/user/2
 "homeAddress":"New York",
 "createdDate":{"year":2015,"era":1,"dayOfYear":341,"dayOfWeek":1,"dayOfMonth":7,"weekyear":2015,"yearOfEra":2015,"hourOfDay":0,"millisOfDay":0,"minuteOfDay":0,"secondOfDay":0,"centuryOfEra":20,"yearOfCentury":15,"minuteOfHour":0,"weekOfWeekyear":50,"secondOfMinute":0,"monthOfYear":12,"millisOfSecond":0,"millis":1449439200000,"zone":{"uncachedZone":{"cachable":true,"fixed":false,"id":"Europe/Helsinki"},"fixed":false,"id":"Europe/Helsinki"},"chronology":{"zone":{"uncachedZone":{"cachable":true,"fixed":false,"id":"Europe/Helsinki"},"fixed":false,"id":"Europe/Helsinki"}},"equalNow":false,"beforeNow":true,"afterNow":false}
 }
+```
 
+<a name="2_getAllUsers">
+####2. Get all users:
+</a><a href="#0_api_contents">↑Up</a>
+
+####Request-method:
+GET
+####URL: 
+server:port\\rest\users
+
+####Description:
+Return list of all users in db.
+
+<a name="3_setUserInfo">
+####3. Add or update user info:
+</a><a href="#0_api_contents">↑Up</a>
+
+####Request-method:
+POST
+####URL: 
+server:port\\rest\user
+####Parameters:
+- id -- id of user (optional, if there are no id, then new record will be created)
+- firstName -- first name of user (optional, if the param "lastName" is presets)
+- lastName -- last name of user (optional, if the param "firstName" is presets)
+- homeAddress -- home address of user (optional)
+
+####Description:
+Return the new record of user (if there are no id or such id not found) with current dateTime as createdDate or update existing record by id.
+When there are no id, first and last name -- throws exception ```Incorrect input data! Required at least 1 parameter, first or last name!```.
+
+####Example:
+
+#####Reguest:
+http://localhost:8080/rest/user with post-params firstName=test&lastName=test2
+#####Response:
+```json
+{
+"id":3,
+"firstName":"test",
+"lastName":"test2",
+"homeAddress":null,
+"createdDate":{"year":2016,"dayOfYear":2,"dayOfWeek":6,"era":1,"dayOfMonth":2,"millisOfDay":0,"secondOfDay":0,"minuteOfDay":0,"hourOfDay":0,"yearOfEra":2016,"weekyear":2015,"monthOfYear":1,"yearOfCentury":16,"weekOfWeekyear":53,"secondOfMinute":0,"minuteOfHour":0,"centuryOfEra":20,"millisOfSecond":0,"millis":1451685600000,"zone":{"uncachedZone":{"cachable":true,"fixed":false,"id":"Europe/Helsinki"},"fixed":false,"id":"Europe/Helsinki"},"chronology":{"zone":{"uncachedZone":{"cachable":true,"fixed":false,"id":"Europe/Helsinki"},"fixed":false,"id":"Europe/Helsinki"}},"equalNow":false,"afterNow":false,"beforeNow":true}
+}
 ```
