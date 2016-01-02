@@ -1,6 +1,20 @@
 # omny-spring-app
 
-##task description:
+##How to run: 
+before run check the database-properties in [application.properties](https://github.com/LamronNu/omny-spring-app/blob/master/src/main/resources/application.properties)
+and set your url, login and password:
+
+```txt
+spring.datasource.url=jdbc:mysql://[your_url]
+spring.datasource.username=[your_login]
+spring.datasource.password=[your_password]
+```
+Then start application using command line:
+```
+mvn clean spring-boot:run
+```
+
+##Task description:
 A table that contains users information: first name, last name, home address, created date
 
 Build a rest API to get a user information by user id
@@ -20,43 +34,29 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 
 ###Features:
 1) Welcome-page represent the list of all available users in table:
-![image](http://prntscr.com/9l9atn)
+![image](/screenshots/welcome-page.png)
 
-2) to get user`s info you can click on appropriate link (in previous table) or enter ulr localhost\user\{user_id}:
-![image](http://prntscr.com/9l9cpc)
+2) to get user`s info you can click on appropriate link (in previous table) or enter ulr localhost\user\\{user_id}:
+![image](/screenshots/user-info-page.png)
 
-3) also for operating with user`s info you can use rest-services (description is below), for example, to get info about user with id=1: 
-![image](http://prntscr.com/9l9mjs)
+3) also for operating with users you can use rest-services (description is <a href="#0_api_contents">below</a>), for example, to get info about user with id=1: <br/>
+![image](/screenshots/user-info-rest-page.png)
 
-4) to get list of users, created *n* days ago, enter this *n* to input-field on welcome-pages -- and it will be downloaded the csv-file (if there are exists such records):
-![image](http://prntscr.com/9l9imp)
+4) to get list of users, created **n** days ago, enter this **n** to input-field on welcome-page -- and it will be downloaded the csv-file (if there are exists such records):
+![image](/screenshots/download-csv.png)
 
-##How to run: 
-before run check the database-properties in [application.properties](https://github.com/LamronNu/omny-spring-app/blob/master/src/main/resources/application.properties)
-and set your url, login and password:
-
-```txt
-spring.datasource.url=jdbc:mysql://[your_url]
-spring.datasource.username=[your_login]
-spring.datasource.password=[your_password]
-```
-Then start application using command line:
-```
-mvn clean spring-boot:run
-```
-
-<a name="0_contents">
+<a name="0_api_contents">
 ##Rest-API specification:</a><br/>
 <a href="#1_getUserInfo">1. Get user info</a><br/>
 
 <a name="1_getUserInfo">
 ####1. Get user info:
-</a><a href="#0_contents">↑Up</a>
+</a><a href="#0_api_contents">↑Up</a>
 
 ####Request-method:
 GET
 ####URL: 
-server:port\\rest\user\{id}
+server:port\\rest\user\\{id}
 ####Parameters:
 - id -- id of user
 
