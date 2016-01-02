@@ -49,7 +49,7 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 ##Rest-API specification:</a><br/>
 <a href="#1_getUserInfo">1. Get user info</a><br/>
 <a href="#2_getAllUsers">2. Get all users</a><br/>
-<a href="#3_setUserInfo">3. Get all users</a><br/>
+<a href="#3_setUserInfo">3. Add or update user info</a><br/>
 
 <a name="1_getUserInfo">
 ####1. Get user info:
