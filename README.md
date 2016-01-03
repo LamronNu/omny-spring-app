@@ -35,7 +35,7 @@ You can run it by one command (see "how to run" paragraph) and quickly check two
 **Batch job** starts when application runs, parse the created-days.csv (placed in *resourses\csv* folder, example of file is [here](/src/main/resources/csv/created-days.csv)) and forms the appropriate output files (if there are exists users on selected date).
 
 ###Technology stack:
-- Spring boot, MVC, JPA
+- Spring boot, MVC, JPA, Batch
 - JSP, Bootstrap
 - Log4j, Maven
 
