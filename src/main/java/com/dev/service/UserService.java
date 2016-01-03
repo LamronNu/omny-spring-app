@@ -28,11 +28,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public File getCsvFile(Integer daysCount) {
-        LOG.info("daysCount=" + daysCount);
-        DateTime dateTime = DateTime.now().minusDays(daysCount).withTimeAtStartOfDay();
-        LOG.info("find on date=" + dateTime);
-        List<User> users = userRepository.findByCreatedDate(dateTime);
-        LOG.info(String.format("find %s users", users.size()));
+        List<User> users = getUsers(daysCount);
         if (users.size() == 0) {
             return null;
         }
@@ -56,5 +52,14 @@ public class UserService {
             LOG.error("cant create csv-file!", e);
         }
         return file;
+    }
+
+    public List<User> getUsers(Integer daysCount) {
+        LOG.info("daysCount=" + daysCount);
+        DateTime dateTime = DateTime.now().minusDays(daysCount).withTimeAtStartOfDay();
+        LOG.info("find on date=" + dateTime.toString(DATE_TIME_PATTERN));
+        List<User> users = userRepository.findByCreatedDate(dateTime);
+        LOG.info(String.format("find %s users", users.size()));
+        return users;
     }
 }

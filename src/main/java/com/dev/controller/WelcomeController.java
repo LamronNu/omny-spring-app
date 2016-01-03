@@ -1,5 +1,6 @@
 package com.dev.controller;
 
+import com.dev.model.BatchJob;
 import com.dev.repository.UserRepository;
 import com.dev.service.UserService;
 import org.apache.log4j.Logger;
@@ -38,14 +39,14 @@ public class WelcomeController {
 
     @ModelAttribute("batchJob")
     public BatchJob initBatchJob(Map<String, Object> model) {
-        LOG.info("init batchJob");
+        LOG.info("init batchJobObject");
         return new BatchJob();
     }
 
     @RequestMapping(value = "/run", method = RequestMethod.POST)
     public void runBatch(@ModelAttribute("batchJob") BatchJob job, HttpServletResponse httpResponse) {
-        LOG.info("run job!");
-        Integer daysCount = job.daysCount;
+        LOG.info("begin download file");
+        Integer daysCount = job.getDaysCount();
         if (daysCount == null) {
             return;
         }
@@ -75,15 +76,15 @@ public class WelcomeController {
         }
     }
 
-    class BatchJob {
-        Integer daysCount;
-
-        public Integer getDaysCount() {
-            return daysCount;
-        }
-
-        public void setDaysCount(Integer daysCount) {
-            this.daysCount = daysCount;
-        }
-    }
+    //    class BatchJob {
+    //        Integer daysCount;
+    //
+    //        public Integer getDaysCount() {
+    //            return daysCount;
+    //        }
+    //
+    //        public void setDaysCount(Integer daysCount) {
+    //            this.daysCount = daysCount;
+    //        }
+    //    }
 }
