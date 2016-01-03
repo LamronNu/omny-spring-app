@@ -1,7 +1,7 @@
 # omny-spring-app
 
 ##How to run: 
-before run check the database-properties in [application.properties](https://github.com/LamronNu/omny-spring-app/blob/master/src/main/resources/application.properties)
+before run check the database-properties in [application.properties](/src/main/resources/application.properties)
 and set your url, login and password:
 
 ```txt
@@ -31,6 +31,8 @@ If the user was created on december 6th 2015, if the batch job passes -3 so lets
 ###Summary:
 Application created basics on spring-boot and maven, logging by Log4j (to console and file) and using bootstrap-pattern on jsp-pages.
 You can run it by one command (see "how to run" paragraph) and quickly check two task requirements: user info page (by pressing appropriate link in table on index-page) and downloading the csv-file with list of users who were created some number of days ago.
+
+**Batch job** starts when application runs, parse the created-days.csv (placed in *resourses\csv folder*, example of file is [here](/src/main/resources/csv)) and forms the appropriate output files (if there are exists users on selected date).
 
 ###Technology stack:
 - Spring boot, MVC, JPA
